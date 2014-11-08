@@ -8,7 +8,8 @@ var	app = express(),
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-	res.status(200).send('<h1>hello world </h1>');
+	// res.status(200).send('<h1>hello world </h1>');
+	res.sendfile('layouts/posts.html');
 });
 
 

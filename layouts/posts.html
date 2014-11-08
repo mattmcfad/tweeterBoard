@@ -8,7 +8,7 @@
 	</head>
 	<body ng-app='app'>
 		<div ng-controller='PostsCtrl' class="container">
-			<h1>Recent Posts</h1>
+			<h1>Recent Posts!</h1>
 			<form role='form'>
 				<div class="form-group">
 					<div class="input-group">
@@ -33,30 +33,26 @@
 	<script>
 		var app = angular.module('app',[]);
 
-		app.controller('PostsCtrl', function($scope){
+		app.controller('PostsCtrl', function($scope, $http){
 			
 			$scope.addPost = function(){
+
 				if ($scope.postBody) {
 
-					$scope.posts.unshift({
-						username: 'devloper',
+					$http.post('/api/posts', {
+						username: 'devloper plz work',
 						body: $scope.postBody 
-					});
-
-					$scope.postBody = null;
+					}).success(function (post) {
+						$scope.posts.unshift(post);
+						$scope.postBody = null;
+					})
 				}
 			};
 
-			$scope.posts = [
-				{
-					username : 'dev1',
-					body : 'test'
-				},
-				{
-					username: 'el padrino',
-					body : 'YFY'
-				}
-			];
+			$http.get('/api/posts')
+				 .success(function (posts) {
+				 	$scope.posts = posts;
+			});
 
 		});
 	</script>
