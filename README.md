@@ -1,9 +1,11 @@
 # tweeter board 
 
 ## technologies
-* Node
+#### MEAN
 * MongoDB
 * Express
+* Angular
+* Node
 
 ## how to use
 * install dependencies
@@ -21,8 +23,11 @@
 	node server.js
 	```
 * open browser
+
 	```
 	localhost:8888/api/posts
 	```
-* Postman
+
+* using Postman 
+
 	![Postman](http://i.imgur.com/28c28PC.png)
