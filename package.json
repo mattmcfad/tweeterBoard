@@ -1,9 +1,10 @@
 {
   "name": "nodeTweets",
   "author": "@mattmcfad",
-  "devDependencies": {
+  "dependencies": {
     "body-parser": "^1.9.2",
     "express": "^4.10.1",
+    "jade": "^1.8.2",
     "mongoose": "^3.8.18"
   }
 }
