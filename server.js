@@ -1,5 +1,6 @@
 var express = require('express'),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	gutil = require ('gulp-util');
 
 var	app = express(),
 	port = 8888;
@@ -16,6 +17,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/assets/"));
 
 
-app.listen(port, function(){
-	console.log("listening on localhost:" + port);
+app.listen(port, function() {
+	gutil.log(gutil.colors.green("Listening on localhost:" + port));
 })
