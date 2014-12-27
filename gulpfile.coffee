@@ -17,10 +17,12 @@ gulp.task 'lint', () ->
   .pipe jshint.reporter 'default'
 
 gulp.task 'watch', () ->
-  gutil.log gutil.colors.magenta 'Gulp: watching stylus:'
+  gutil.log gutil.colors.magenta 'Gulp: watching stylus files'
   gulp.watch param.styles, ['styles']
-  gutil.log gutil.colors.magenta 'Gulp: watching all js files:'
+  gutil.log gutil.colors.magenta 'Gulp: watching all js files'
   gulp.watch param.all_js_files, ['lint']
+  gutil.log gutil.colors.magenta 'Gulp: watching all jade jade'
+  gulp.watch param.jade_watch, ['jade']
 
 gulp.task 'styles', () ->
   gutil.log gutil.colors.yellow 'Gulp: compiling stylus'
@@ -48,4 +50,4 @@ nodemonSettings =
     'NODE_ENV': 'development'
 
 
-gulp.task 'default', ['styles','lint','nodemon','watch']
+gulp.task 'default', ['jade','styles','lint','nodemon','watch']

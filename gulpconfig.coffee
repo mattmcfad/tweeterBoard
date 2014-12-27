@@ -1,6 +1,7 @@
 param =
 	styles: './styles/main.styl'
 	jade_views: './views/*.jade'
+	jade_watch: './views/**/*.jade'
 	dist_css: './public/css/'
 	dist_html: './public/layouts/'
 	all_js_files: ['./server.js','./db.js', './controllers/**/*.js', './public/javascript/*.js']
