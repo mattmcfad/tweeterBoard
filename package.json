@@ -34,6 +34,7 @@
     "coffee-script": "^1.7.0",
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^1.0.0",
+    "gulp-jade": "^0.10.0",
     "gulp-jshint": "^1.9.0",
     "gulp-livereload": "^2.1.1",
     "gulp-nodemon": "^1.0.4",

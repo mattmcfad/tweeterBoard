@@ -1,4 +1,11 @@
-var app = angular.module('app',[]);
+var app = angular.module('app',['ngRoute']);
+
+app.config(function($routeProvider) {
+	$routeProvider
+	.when("/", { controller: "PostsCtrl", templateUrl: "posts.html"})
+	.when("/register", { controller: "RegisterCtrl", templateUrl: "register.html"})
+	.when("/login", { controller: "LoginCtrl", templateUrl: "login.html"});
+});
 
 app.service("PostsSvc", function ($http) {
 

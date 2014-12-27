@@ -6,6 +6,7 @@ watch       = require 'gulp-watch'
 jshint      = require 'gulp-jshint'
 prefix      = require 'gulp-autoprefixer'
 stylus      = require 'gulp-stylus'
+jade        = require 'gulp-jade'
 
 param = require './gulpconfig.coffee'
 
@@ -28,6 +29,12 @@ gulp.task 'styles', () ->
   .pipe prefix()
   .pipe gulp.dest param.dist_css
 
+gulp.task 'jade', () ->
+  gutil.log gutil.colors.yellow 'Gulp: compiling jade'
+  gulp.src param.jade_views
+  .pipe jade( pretty: true)
+  .pipe gulp.dest param.dist_html
+
 gulp.task 'nodemon', () ->
   nodemon nodemonSettings
   .on 'change', ['lint']
@@ -36,7 +43,7 @@ gulp.task 'nodemon', () ->
 
 nodemonSettings =
   script: 'server.js'
-  ext: 'js html'
+  ext: 'js'
   env:
     'NODE_ENV': 'development'
 
