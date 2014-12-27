@@ -1,0 +1,17 @@
+.container
+	h1 Registration
+	form(ng-submit="registration(username, email, password, confirmpassword)")
+		.form-group
+			label Username
+			input.form-control(type="text", ng-model="username")
+		.form-group
+			label Email
+			input.form-control(type="email", ng-model="email")
+		.form-group
+			label Password
+			input.form-control(type="text", ng-model="password")
+		.form-group
+			label Confirm Password
+			input.form-control(type="text", ng-model="confirmpassword")
+		input.btn.btn-success.btn-lg.btn-block(type="submit", value="Register")
+							

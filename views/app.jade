@@ -4,15 +4,5 @@ html(lang="en")
         include include/header
         include include/scripts
     body(ng-app="app")
-        .container(ng-controller="PostsCtrl")
-            h1 Node Tweeets
-            form(role="form")
-                .form-group
-                    .input-group
-                        input.form-control(ng-model="postBody")
-                        span.input-group-btn
-                            .btn.btn-default(ng-click="addPost()") add Post
-            ul.list-group
-                li.list-group-item(ng-repeat="post in posts | orderBy: '-date'")
-                    strong @{{post.username}}
-                    span {{post.body}}
+        include include/nav
+        div(ng-view)

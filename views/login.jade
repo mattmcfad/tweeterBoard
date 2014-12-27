@@ -1,0 +1,10 @@
+.container
+	h1 Login Panel
+	form(ng-submit="login(username, password)")
+		.form-group
+			label Username
+			input.form-control(type="text", ng-model="username")
+		.form-group
+			label Password
+			input.form-control(type="text", ng-model="password")
+		input.btn.btn-success.btn-lg.btn-block(type="submit", value="Login")
