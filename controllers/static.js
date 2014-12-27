@@ -1,8 +1,13 @@
 var express = require("express");
-var router = express.Router();
+var router = require("express").Router();
 
-router.get('/', function(req, res) {
-	res.render("index.jade", {dev: {name: "matt"}});
+router.get("/", function (req, res) {
+	if (req.err){
+		console.warn(err.message);
+	}
+	else {
+		res.status(200).sendFile("./layouts/app.html", {"root": __dirname + "/../public/"});
+	}
 });
 
 module.exports = router;
