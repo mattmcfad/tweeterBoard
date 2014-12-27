@@ -7,16 +7,15 @@ var	app = express(),
 
 app.use(bodyParser.json());
 app.engine('jade', require('jade').__express);
-app.set('views', __dirname + '/public/assets/views')
+app.set('views', __dirname + '/views');
 
 
 app.use(require('./controllers/api/posts'));
 app.use(require('./controllers/static'));
 
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(__dirname + "/public/assets/"));
 
 
 app.listen(port, function() {
-	gutil.log(gutil.colors.green("Listening on localhost:" + port));
-})
+	gutil.log(gutil.colors.green("Server started on localhost:" + port));
+});
