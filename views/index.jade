@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+doctype html
 html(lang="en")
     head
-        meta(charset="UTF-8")
-        title tweeter
-        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css")
+        include include/header
+        include include/scripts
     body(ng-app="app")
         .container(ng-controller="PostsCtrl")
             h1 Node Tweeets
@@ -18,5 +17,3 @@ html(lang="en")
                 li.list-group-item(ng-repeat="post in posts | orderBy: '-date'")
                     strong @{{post.username}}
                     span {{post.body}}
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js')
-    script(src="/javascript/app.js")
