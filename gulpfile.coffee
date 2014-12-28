@@ -28,7 +28,7 @@ gulp.task 'styles', () ->
   gutil.log gutil.colors.yellow 'Gulp: compiling stylus'
   gulp.src param.styles
   .pipe stylus()
-  .pipe prefix()
+  .pipe prefix 'last 2 versions'
   .pipe gulp.dest param.dist_css
 
 gulp.task 'jade', () ->
