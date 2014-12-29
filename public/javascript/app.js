@@ -1,13 +1,13 @@
 var app = angular.module('app',['ngRoute']);
 
-app.config(function($routeProvider) {
+app.config( function($routeProvider) {
 	$routeProvider
 	.when("/", { controller: "PostsCtrl", templateUrl: "posts.html"})
 	.when("/register", { controller: "RegisterCtrl", templateUrl: "register.html"})
 	.when("/login", { controller: "LoginCtrl", templateUrl: "login.html"});
 });
 
-app.service("PostsSvc", function ($http) {
+app.service("PostsSvc", function($http) {
 
 	this.fetch = function() {
 		return $http.get('/api/posts');
@@ -40,4 +40,48 @@ app.controller('PostsCtrl', function($scope, PostsSvc){
 		$scope.posts = posts;
 	});
 
+});
+
+app.service("UserSvc", function($http){
+	var svc = this;
+	svc.getUser = function() {
+		return $http.get('/api/users', {
+			headers: {'X-Auth': this.token}
+		});
+	};
+	svc.login = function(username, password) {
+		return $http.post('/api/session', {
+			username: username,
+			password: password
+		}).then(function(val){
+			svc.token = val.data;
+			return svc.getUser();
+		});
+	};
+	svc.createUser = function(username, password) {
+		return $http.post('/api/users', {
+			username: username,
+			password: password
+		});
+	};
+});
+
+app.controller('LoginCtrl', function($scope, UserSvc){
+	$scope.login = function (username, password){
+		UserSvc.login(username, password)
+		.then(function(user){
+			console.log(user);
+		});
+	};
+});
+
+
+app.controller('RegisterCtrl', function($scope, UserSvc){
+	$scope.register = function (username, email, password, confirmpassword){
+		console.log("register:", username, password);
+		UserSvc.createUser(username, password)
+		.then(function(user){
+			console.log("created user: ", user);
+		});
+	};
 });
