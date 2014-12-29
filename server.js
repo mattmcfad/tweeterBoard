@@ -7,6 +7,8 @@ var	app = express(),
 
 app.use(bodyParser.json());
 
+app.use('/api/session', require('./controllers/api/session'));
+app.use('/api/users', require('./controllers/api/users'));
 app.use('/api/posts', require('./controllers/api/posts'));
 app.use('/', require('./controllers/static'));
 

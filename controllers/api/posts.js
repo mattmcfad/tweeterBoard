@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
 
 	post.save(function(err, post){
 		if (err) {
-			console.log("fac");
+			console.error("Error: saving Post");
 			return next(err);
 		}
 		res.status(201).json(post);
