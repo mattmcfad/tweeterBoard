@@ -79,9 +79,11 @@ app.controller('LoginCtrl', function($scope, UserSvc){
 app.controller('RegisterCtrl', function($scope, UserSvc){
 	$scope.register = function (username, email, password, confirmpassword){
 		console.log("register:", username, password);
-		UserSvc.createUser(username, password)
-		.then(function(user){
-			console.log("created user: ", user);
-		});
+		if (password === confirmpassword){
+			UserSvc.createUser(username, password)
+			.then(function(user){
+				console.log("created user: ", user);
+			});
+		}
 	};
 });
